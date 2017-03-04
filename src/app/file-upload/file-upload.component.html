@@ -1,0 +1,7 @@
+<h3>Upload file (.xlf)</h3>
+<input type="file" (change)="fileChanged($event)" placeholder="***.xlf" />
+<button type="button" (click)="import()">Import</button>
+
+<pre>
+  {{ fileContent }}
+</pre>
