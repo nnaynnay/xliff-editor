@@ -1,16 +1,4 @@
-# XliffEditor
-
-## TODO
-- file upload
-- file validation
-- file parse content
-- xlf to json
-- display in editable table
-- json to xlf
-- save and export 
-
-- local storage
-- test
+# XliffEditor (WIP)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 

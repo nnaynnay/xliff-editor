@@ -2,6 +2,4 @@
 <input type="file" (change)="fileChanged($event)" placeholder="***.xlf" />
 <button type="button" (click)="import()">Import</button>
 
-<pre>
-  {{ fileContent }}
-</pre>
+{{ fileContentJson | json }}

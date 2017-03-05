@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { Logger } from './logger';
-import { FileHandlerService } from './file-handler.service';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { Logger } from './utility/logger';
+import { FileHandlerService } from './file-handler/file-handler.service';
+import { XliffParserService } from './xliff-parser/xliff-parser.service';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
   ],
   providers: [
     FileHandlerService,
+    XliffParserService,
     Logger
   ],
   bootstrap: [

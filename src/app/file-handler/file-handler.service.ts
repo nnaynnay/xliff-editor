@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Logger } from './logger';
+import { Logger } from '../utility/logger';
 import { Observable } from  'rxjs/Observable';
 import { BehaviorSubject } from  'rxjs/BehaviorSubject';
 
 @Injectable()
 export class FileHandlerService {
 
-  fileContent: Observable<String>;
+  fileContent: Observable<string>;
 
   private fileReader: FileReader;
-  private _fileContent: BehaviorSubject<String>;
+  private _fileContent: BehaviorSubject<string>;
 
   constructor(
     private logger: Logger
@@ -27,8 +27,6 @@ export class FileHandlerService {
     this.fileReader.readAsText(file);
   }
 
-  validateFile() {
-
-  }
+  // validateFile()
 
 }
