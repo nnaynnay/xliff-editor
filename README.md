@@ -1,5 +1,99 @@
 # XliffEditor (WIP)
 
+Editor for  [Xliff version 2](http://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html)
+
+### Sample file
+```
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0"
+ srcLang="en-US" trgLang="ja-JP">
+ <file id="f1" original="Graphic Example.psd">
+  <skeleton href="Graphic Example.psd.skl"/>
+  <unit id="1">
+   <segment>
+    <source>Quetzal</source>
+    <target>Quetzal</target>
+   </segment>
+  </unit>
+  <unit id="2">
+   <segment>
+    <source>An application to manipulate and process XLIFF documents</source>
+    <target>XLIFF 文書を編集、または処理 するアプリケーションです。</target>
+   </segment>
+  </unit>
+  <unit id="3">
+   <segment>
+    <source>XLIFF Data Manager</source>
+    <target>XLIFF データ・マネージャ</target>
+   </segment>
+  </unit>
+ </file>
+</xliff>
+```
+
+### Xliff Tree Structure
+
+Legend:
+1 = one
++ = one or more
+? = zero or one
+* = zero or more
+
+```
+<xliff>
+|
++---<file> +
+  |
+  +---<skeleton> ?
+  | |
+  | +---<other> *
+  |
+  +---<other> *
+  |
+  +---<notes> ?
+  | |
+  | +---<note> +
+  |
+  +---At least one of (<unit> OR <group>)
+      | |
+      | +---<unit>
+      |   |
+      |   +---<other> *
+      |   |
+      |   +---<notes> ?
+      |   | |
+      |   | +---<note> +
+      |   |
+      |   +---<originalData> ?
+      |   | |
+      |   | +---<data> +
+      |   |
+      |   +---At least one of (<segment> OR <ignorable>)
+      |       | |
+      |       | +---<segment>
+      |       |   |
+      |       |   +---<source> 1
+      |       |   |
+      |       |   +---<target> ?
+      |       |
+      |       +---<ignorable>
+      |           |
+      |           +---<source> 1
+      |           |
+      |           +---<target> ?
+      |
+      +---<group>
+          |
+          +---<other> *
+          |
+          +---<notes> ?
+          | |
+          | +---<note> +
+          |
+          +---At least one of (<unit> OR <group>)
+
+```
+
+##
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 ## Development server

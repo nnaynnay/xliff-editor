@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '../../utility/logger';
 import { FileHandlerService } from '../../file-handler/file-handler.service';
 import { XliffParserService } from '../../xliff-parser/xliff-parser.service';
-import { Observable } from  'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -15,7 +15,6 @@ export class FileUploadComponent implements OnInit {
 
   fileContent: string;
   fileContentJson: any;
-
   private subscription: Subscription;
 
   constructor(
