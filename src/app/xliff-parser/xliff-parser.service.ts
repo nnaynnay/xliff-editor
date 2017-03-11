@@ -9,24 +9,20 @@ export class XliffParserService {
 
   constructor(
     private logger: Logger
-  ) {
-
-  }
+  ) { }
 
   parse(contentXml: string) {
     let x2js = new X2JS();
     let contentJson = x2js.xml_str2json(contentXml);
-    // this.logger.log(contentJson);
 
     if (contentJson.length <= 0) {
       return null;
     }
 
-    let xlf: Xliff = Object.assign( new Xliff(), contentJson.xliff);
-    this.logger.log(xlf.file);
-
-    return contentJson;
-
+    let xliff: Xliff = Object.assign(new Xliff(), contentJson);
+    // TODO: Validate xliff format.
+    this.logger.log('parse: ', xliff);
+    return xliff;
   }
 
 }

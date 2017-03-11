@@ -19,7 +19,7 @@ export class FileHandlerService {
   }
 
   readContent(file: File) {
-    this.logger.log(file);
+    this.logger.log('readContent:', file);
     this.fileReader = new FileReader();
     this.fileReader.onloadend = (e) => {
       this._fileContent.next(this.fileReader.result);

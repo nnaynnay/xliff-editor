@@ -33,10 +33,10 @@ Editor for  [Xliff version 2](http://docs.oasis-open.org/xliff/xliff-core/v2.0/o
 ### Xliff Tree Structure
 
 Legend:
-1 = one
-+ = one or more
-? = zero or one
-* = zero or more
+- 1 = one
+- + = one or more
+- ? = zero or one
+- * = zero or more
 
 ```
 <xliff>
