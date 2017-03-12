@@ -11,6 +11,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { XliffViewerComponent } from './components/xliff-viewer/xliff-viewer.component';
 import { XliffViewerItemComponent } from './components/xliff-viewer-item/xliff-viewer-item.component';
 import { ObjectToArrayPipe } from './utility/object-to-array.pipe';
+import { XliffSegmentComponent } from './components/xliff-segment/xliff-segment.component';
+import { FileDownloadComponent } from './components/file-download/file-download.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ObjectToArrayPipe } from './utility/object-to-array.pipe';
     FileUploadComponent,
     XliffViewerComponent,
     XliffViewerItemComponent,
-    ObjectToArrayPipe
+    ObjectToArrayPipe,
+    XliffSegmentComponent,
+    FileDownloadComponent
   ],
   imports: [
     BrowserModule,

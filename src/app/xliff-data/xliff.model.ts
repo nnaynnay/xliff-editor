@@ -4,7 +4,6 @@ import { XliffSegment } from './xliff-segment.model';
 import { XliffUnit } from './xliff-unit.model';
 
 export class Xliff {
-    TAG = 'xliff';
     _version: string;
     _srcLang: string;
     _trgLang?: string;

@@ -19,7 +19,6 @@ export class AppComponent {
   ) {}
 
   handleFileChange($event) {
-    this.logger.log('file changed', $event);
-    this.xliffData = this.xliffParserService.parse($event);
+    this.xliffData = this.xliffParserService.parseToXliff($event);
   }
 }

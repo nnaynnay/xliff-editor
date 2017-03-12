@@ -1,4 +1,12 @@
-import { Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+  Renderer
+} from '@angular/core';
 import { Logger } from '../../utility/logger';
 import { FileHandlerService } from '../../file-handler/file-handler.service';
 import { Observable } from 'rxjs/Observable';
@@ -15,13 +23,17 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class FileUploadComponent implements OnInit {
 
+  /** Reference to the file input field. For manual trigger the element click event. */
+  @ViewChild('fileInput') fileInput:ElementRef;
+  /** For notify parent component, when the input file content changed. */
   @Output() fileChange = new EventEmitter<string>();
 
   private subscription: Subscription;
 
   constructor(
     private logger: Logger,
-    private fileHandlerService: FileHandlerService
+    private fileHandlerService: FileHandlerService,
+    private renderer:Renderer
   ) {
   }
 

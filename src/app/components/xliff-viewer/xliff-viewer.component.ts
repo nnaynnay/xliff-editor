@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Xliff } from '../../xliff-data/xliff.model';
 import { Subscription } from 'rxjs/Subscription';
 import { XliffParserService } from '../../xliff-parser/xliff-parser.service';
@@ -10,21 +10,21 @@ import { Logger } from '../../utility/logger';
   templateUrl: './xliff-viewer.component.html',
   styleUrls: ['./xliff-viewer.component.css']
 })
-export class XliffViewerComponent implements OnInit, OnChanges {
+export class XliffViewerComponent implements OnInit {
 
   @Input() xliffData: Xliff;
 
+  /** Enable download file when xliff data is ready. */
+  get enableDownloadFile() {
+    return (this.xliffData) ? true : false;
+  }
 
   constructor(
-    private logger: Logger,
-    private xliffParserService: XliffParserService
+    private logger: Logger
   ) { }
 
   ngOnInit() {
 
-  }
-
-  ngOnChanges(changes: any) {
   }
 
 

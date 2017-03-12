@@ -1,15 +1,17 @@
 <div class="xliff-view">
   <div *ngFor="let item of xliffItem | objectToArray">
 
-      <div class="xliff-view-source" *ngIf="item.$key === 'source'">
-        Source: <span>{{ item.$value }}</span>
-      </div>
-      <div class="xliff-view-target" *ngIf="item.$key === 'target'">
-        Target: <span>{{ item.$value }}</span>
-      </div>
+    <div [ngSwitch]="item.$key">
+      <app-xliff-segment
+        *ngSwitchCase="'segment'"
+        [xliffSegment]="item.$value"></app-xliff-segment>
+      <!--<app-xliff-viewer-item
+        *ngSwitchDefault="'xliff'" [xliffItem]="item.$value" [parentKeys]="parentKeys.concat(item.$key)">
+      </app-xliff-viewer-item>-->
+    </div>
 
     <app-xliff-viewer-item
-      *ngIf="item.$key === 'xliff' || item.$key === 'file' || item.$key === 'group' || item.$key === 'unit' || item.$key === 'segment' || isArrayKey(item.$key)"
+      *ngIf="item.$key === 'xliff' || item.$key === 'file' || item.$key === 'group' || item.$key === 'unit' || isArrayKey(item.$key)"
       [xliffItem]="item.$value"
       [parentKeys]="parentKeys.concat(item.$key)"
       >

@@ -1,5 +1,10 @@
-<h3>Upload file (.xlf)</h3>
-<input type="file" (change)="fileChanged($event)" placeholder="***.xlf" />
-<button type="button" (click)="import()">Import</button>
-
-{{ fileContentJson | json }}
+<div class="ui basic segment center aligned">
+    <div class="ui left icon action input labeled">
+        <div class="ui label">
+            <i class="file icon"></i>
+            .xlf
+        </div>
+        <input #fileInput type="file" (change)="fileChanged($event)"/>
+        <div class="ui blue submit button" (click)="fileInput.click()">Upload</div>
+    </div>
+</div>

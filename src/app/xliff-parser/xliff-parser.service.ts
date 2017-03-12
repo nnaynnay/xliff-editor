@@ -7,13 +7,19 @@ import { Xliff } from '../xliff-data/xliff.model';
 @Injectable()
 export class XliffParserService {
 
+  x2js: any;
+
   constructor(
     private logger: Logger
-  ) { }
+  ) {
+    this.x2js = new X2JS({
+      stripWhitespaces: false,
+      useDoubleQuotes: true
+    });
+  }
 
-  parse(contentXml: string) {
-    let x2js = new X2JS();
-    let contentJson = x2js.xml_str2json(contentXml);
+  parseToXliff(contentXml: string) {
+    let contentJson = this.x2js.xml_str2json(contentXml);
 
     if (contentJson.length <= 0) {
       return null;
@@ -23,6 +29,10 @@ export class XliffParserService {
     // TODO: Validate xliff format.
     this.logger.log('parse: ', xliff);
     return xliff;
+  }
+
+  convertToXmlStr(xliffData: Xliff) {
+    return this.x2js.json2xml_str(xliffData);
   }
 
 }

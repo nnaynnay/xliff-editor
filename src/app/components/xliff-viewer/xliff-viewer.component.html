@@ -1,3 +1,25 @@
-<app-xliff-viewer-item [xliffItem]="xliffData" [parentKeys]="[]"></app-xliff-viewer-item>
-<hr/>
-<pre>{{xliffData | json}}</pre>
+<h4 *ngIf="xliffData" class="ui horizontal divider header">
+  <i class="edit icon"></i>
+  Edit translation
+</h4>
+
+<!-- Xliff items -->
+<app-xliff-viewer-item [(xliffItem)]="xliffData" [parentKeys]="[]"></app-xliff-viewer-item>
+
+<h4 *ngIf="xliffData" class="ui horizontal divider header">
+  <i class="download icon"></i>
+  Download file
+</h4>
+<app-file-download  *ngIf="xliffData"
+  [xliffData]="xliffData"></app-file-download>
+
+<!-- Debug -->
+<h4 *ngIf="xliffData" class="ui horizontal divider header">
+  <i class="bug icon"></i>
+  Debug
+</h4>
+
+<div *ngIf="xliffData" class="ui container basic segment">
+  <h3>Debug</h3>
+  <pre>{{xliffData | json}}</pre>
+</div>
