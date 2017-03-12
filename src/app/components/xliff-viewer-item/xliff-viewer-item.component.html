@@ -1,20 +1,22 @@
-<div class="xliff-view">
-  <div *ngFor="let item of xliffItem | objectToArray">
+<ng-container *ngFor="let item of xliffItem | objectToArray">
 
-    <div [ngSwitch]="item.$key">
-      <app-xliff-segment
-        *ngSwitchCase="'segment'"
-        [xliffSegment]="item.$value"></app-xliff-segment>
-      <!--<app-xliff-viewer-item
-        *ngSwitchDefault="'xliff'" [xliffItem]="item.$value" [parentKeys]="parentKeys.concat(item.$key)">
-      </app-xliff-viewer-item>-->
-    </div>
+  <ng-container [ngSwitch]="item.$key">
+    <app-xliff-segment *ngSwitchCase="'segment'" [xliffSegment]="item.$value" [parentKeys]="updateParentKeys"></app-xliff-segment>
+    <app-xliff-unit *ngSwitchCase="'unit'" [xliffUnit]="item.$value" [parentKeys]="updateParentKeys"></app-xliff-unit>
+    <app-xliff-group *ngSwitchCase="'group'" [xliffGroup]="item.$value" [parentKeys]="updateParentKeys"></app-xliff-group>
+    <app-xliff-file *ngSwitchCase="'file'" [xliffFile]="item.$value" [parentKeys]="updateParentKeys"></app-xliff-file>
+  </ng-container>
 
-    <app-xliff-viewer-item
-      *ngIf="item.$key === 'xliff' || item.$key === 'file' || item.$key === 'group' || item.$key === 'unit' || isArrayKey(item.$key)"
-      [xliffItem]="item.$value"
-      [parentKeys]="parentKeys.concat(item.$key)"
-      >
-      </app-xliff-viewer-item>
-  </div>
-</div>
+  <app-xliff-viewer-item
+   class="row"
+    *ngIf="item.$key === 'xliff'"
+    [xliffItem]="item.$value"
+    [parentKeys]="updateParentKeys">
+  </app-xliff-viewer-item>
+  <app-xliff-viewer-item
+   class="row"
+    *ngIf="isArrayKey(item.$key)"
+    [xliffItem]="item.$value"
+    [parentKeys]="parentKeys">
+  </app-xliff-viewer-item>
+</ng-container>

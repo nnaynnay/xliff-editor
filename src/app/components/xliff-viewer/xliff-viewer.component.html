@@ -1,22 +1,26 @@
 <h4 *ngIf="xliffData" class="ui horizontal divider header">
-  <i class="edit icon"></i>
-  Edit translation
+  <i class="edit icon"></i> Edit translation
 </h4>
 
 <!-- Xliff items -->
-<app-xliff-viewer-item [(xliffItem)]="xliffData" [parentKeys]="[]"></app-xliff-viewer-item>
+<div *ngIf="xliffData">
+  <div class="ui grid">
+    <div class="two wide column">#</div>
+    <div class="seven wide column">Source</div>
+    <div class="seven wide column">Target</div>
+  </div>
+  <app-xliff-viewer-item [(xliffItem)]="xliffData" [parentKeys]="[]"></app-xliff-viewer-item>
+
+</div>
 
 <h4 *ngIf="xliffData" class="ui horizontal divider header">
-  <i class="download icon"></i>
-  Download file
+  <i class="download icon"></i> Download file
 </h4>
-<app-file-download  *ngIf="xliffData"
-  [xliffData]="xliffData"></app-file-download>
+<app-file-download *ngIf="xliffData" [xliffData]="xliffData"></app-file-download>
 
 <!-- Debug -->
 <h4 *ngIf="xliffData" class="ui horizontal divider header">
-  <i class="bug icon"></i>
-  Debug
+  <i class="bug icon"></i> Debug
 </h4>
 
 <div *ngIf="xliffData" class="ui container basic segment">

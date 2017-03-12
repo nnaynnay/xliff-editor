@@ -9,6 +9,7 @@ import { XliffSegment } from '../../xliff-data/xliff-segment.model';
 export class XliffSegmentComponent implements OnInit {
 
   @Input() xliffSegment: XliffSegment;
+  @Input() parentKeys: string[];
 
   constructor() { }
 

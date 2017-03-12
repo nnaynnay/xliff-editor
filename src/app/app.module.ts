@@ -13,6 +13,9 @@ import { XliffViewerItemComponent } from './components/xliff-viewer-item/xliff-v
 import { ObjectToArrayPipe } from './utility/object-to-array.pipe';
 import { XliffSegmentComponent } from './components/xliff-segment/xliff-segment.component';
 import { FileDownloadComponent } from './components/file-download/file-download.component';
+import { XliffGroupComponent } from './components/xliff-group/xliff-group.component';
+import { XliffUnitComponent } from './components/xliff-unit/xliff-unit.component';
+import { XliffFileComponent } from './components/xliff-file/xliff-file.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FileDownloadComponent } from './components/file-download/file-download.
     XliffViewerItemComponent,
     ObjectToArrayPipe,
     XliffSegmentComponent,
-    FileDownloadComponent
+    FileDownloadComponent,
+    XliffGroupComponent,
+    XliffUnitComponent,
+    XliffFileComponent
   ],
   imports: [
     BrowserModule,
