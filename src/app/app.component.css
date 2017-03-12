@@ -1,3 +1,21 @@
-.ui.header{
-    font-size: 5rem;
+/* global */
+.ui.text.container,
+.ui.header,
+h1, h2, h3, h4, h5 {
+    font-family: "Courier";
+}
+
+.ui.header {
+    font-size: 6rem;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.ui.header .wrapper {
+    color: #ccc;
+    display: block;
+}
+
+.ui.masthead {
+    margin: 10rem 0 2rem;
 }

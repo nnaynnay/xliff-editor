@@ -1,0 +1,8 @@
+h1, h2, h3, h4, h5 {
+    font-family: "Courier";
+}
+
+.ui.horizontal.divider{
+    margin: 2rem 0;
+    color: #ccc;
+}
