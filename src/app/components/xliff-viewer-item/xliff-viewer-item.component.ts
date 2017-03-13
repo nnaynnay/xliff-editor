@@ -21,7 +21,7 @@ export class XliffViewerItemComponent implements OnInit {
   }
 
   get updateParentKeys() {
-    return (this.xliffItem['_id']) ? this.parentKeys.concat(this.xliffItem['_id']) : this.parentKeys;
+    return (this.xliffItem['_id'] || this.xliffItem['_name']) ? this.parentKeys.concat(this.xliffItem['_id'] || this.xliffItem['_name']) : this.parentKeys;
   }
 
 }
