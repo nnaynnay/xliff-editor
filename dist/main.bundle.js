@@ -434,7 +434,7 @@ var XliffFileComponent = (function () {
     };
     Object.defineProperty(XliffFileComponent.prototype, "updateParentKeys", {
         get: function () {
-            return (this.xliffFile._id) ? this.parentKeys.concat(this.xliffFile._id) : this.parentKeys;
+            return this.parentKeys;
         },
         enumerable: true,
         configurable: true
@@ -484,9 +484,12 @@ var XliffGroupComponent = (function () {
     }
     XliffGroupComponent.prototype.ngOnInit = function () {
     };
+    XliffGroupComponent.prototype.isArrayKey = function (key) {
+        return /^\d+$/.test(key);
+    };
     Object.defineProperty(XliffGroupComponent.prototype, "updateParentKeys", {
         get: function () {
-            return (this.xliffGroup._id) ? this.parentKeys.concat(this.xliffGroup._id) : this.parentKeys;
+            return this.parentKeys;
         },
         enumerable: true,
         configurable: true
@@ -582,9 +585,12 @@ var XliffUnitComponent = (function () {
     }
     XliffUnitComponent.prototype.ngOnInit = function () {
     };
+    XliffUnitComponent.prototype.isArrayKey = function (key) {
+        return /^\d+$/.test(key);
+    };
     Object.defineProperty(XliffUnitComponent.prototype, "updateParentKeys", {
         get: function () {
-            return (this.xliffUnit._id) ? this.parentKeys.concat(this.xliffUnit._id) : this.parentKeys;
+            return this.parentKeys;
         },
         enumerable: true,
         configurable: true
@@ -639,7 +645,7 @@ var XliffViewerItemComponent = (function () {
     };
     Object.defineProperty(XliffViewerItemComponent.prototype, "updateParentKeys", {
         get: function () {
-            return (this.xliffItem['_id']) ? this.parentKeys.concat(this.xliffItem['_id']) : this.parentKeys;
+            return (this.xliffItem['_id'] || this.xliffItem['_name']) ? this.parentKeys.concat(this.xliffItem['_id'] || this.xliffItem['_name']) : this.parentKeys;
         },
         enumerable: true,
         configurable: true
@@ -700,6 +706,9 @@ var XliffViewerComponent = (function () {
         configurable: true
     });
     XliffViewerComponent.prototype.ngOnInit = function () {
+    };
+    XliffViewerComponent.prototype.ngAfterViewChecked = function () {
+        this.logger.log('rendered');
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(), 
@@ -960,14 +969,14 @@ module.exports = ""
 /***/ 626:
 /***/ function(module, exports) {
 
-module.exports = ":host {\n    display: block;\n    margin-bottom: 10rem;\n}"
+module.exports = ":host {\n    display: block;\n    margin-bottom: 10rem;\n}\n:host input[type=file] {\n    display: none;\n}"
 
 /***/ },
 
 /***/ 627:
 /***/ function(module, exports) {
 
-module.exports = ""
+module.exports = ":host {\n    margin: 1rem 0;\n    display: block;\n}"
 
 /***/ },
 
@@ -1002,7 +1011,7 @@ module.exports = "<div class=\"ui basic clearing segment\">\n  <a (click)=\"down
 /***/ 632:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ui basic segment center aligned\">\n    <div class=\"ui left icon action input labeled\">\n        <div class=\"ui label\">\n            <i class=\"file icon\"></i>\n            .xlf\n        </div>\n        <input #fileInput type=\"file\" (change)=\"fileChanged($event)\"/>\n        <div class=\"ui red submit button\" (click)=\"fileInput.click()\">UPLOAD</div>\n    </div>\n</div>"
+module.exports = "<div class=\"ui basic segment center aligned\">\n    <div class=\"ui input\">\n        <input #fileInput type=\"file\" (change)=\"fileChanged($event)\"/>\n        <div class=\"ui red submit button\" (click)=\"fileInput.click()\">\n            UPLOAD *.XLF</div>\n    </div>\n</div>"
 
 /***/ },
 
@@ -1023,7 +1032,7 @@ module.exports = "<app-xliff-viewer-item\n    class=\"row\"\n    [xliffItem]=\"x
 /***/ 635:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ui grid form\">\n    <div class=\"sixteen wide column\">\n        <div class=\"ui small breadcrumb\">\n            <ng-container *ngFor=\"let parentKey of parentKeys; let i=index\">\n                <i *ngIf=\"i !== 0\" class=\"right angle icon divider\"></i>\n                <a class=\"section\">{{parentKey}}</a>\n            </ng-container>\n        </div>\n    </div>\n    <div class=\"seven wide column\">\n        {{xliffSegment.source}}\n    </div>\n    <div class=\"seven wide column\">\n        <textarea rows=\"2\"[(ngModel)]=\"xliffSegment.target\"></textarea>\n    </div>\n</div>"
+module.exports = "<div class=\"ui form segments\">\n    <div class=\"ui segment\">\n        <div class=\"ui small breadcrumb\">\n            <ng-container *ngFor=\"let parentKey of parentKeys; let i=index\">\n                <i *ngIf=\"i !== 0\" class=\"right angle icon divider\"></i>\n                <a class=\"section\">{{parentKey}}</a>\n            </ng-container>\n        </div>\n    </div>\n\n    <div class=\"ui horizontal segments grid\">\n        <div class=\"ui segment eight wide column\">\n            {{xliffSegment.source}}\n        </div>\n        <div class=\"ui segment eight wide column\">\n            <textarea rows=\"2\" [(ngModel)]=\"xliffSegment.target\"></textarea>\n        </div>\n    </div>\n</div>"
 
 /***/ },
 
@@ -1044,7 +1053,7 @@ module.exports = "<ng-container *ngFor=\"let item of xliffItem | objectToArray\"
 /***/ 638:
 /***/ function(module, exports) {
 
-module.exports = "<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"edit icon\"></i> Edit translation\n</h4>\n\n<!-- Xliff items -->\n<div *ngIf=\"xliffData\">\n  <div class=\"ui grid\">\n    <div class=\"two wide column\">#</div>\n    <div class=\"seven wide column\">Source</div>\n    <div class=\"seven wide column\">Target</div>\n  </div>\n  <app-xliff-viewer-item [(xliffItem)]=\"xliffData\" [parentKeys]=\"[]\"></app-xliff-viewer-item>\n\n</div>\n\n<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"download icon\"></i> Download file\n</h4>\n<app-file-download *ngIf=\"xliffData\" [xliffData]=\"xliffData\"></app-file-download>\n\n<!-- Debug -->\n<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"bug icon\"></i> Debug\n</h4>\n\n<div *ngIf=\"xliffData\" class=\"ui container basic segment\">\n  <h3>Debug</h3>\n  <pre>{{xliffData | json}}</pre>\n</div>"
+module.exports = "<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"edit icon\"></i> Edit translation\n</h4>\n\n<!-- Xliff items -->\n<div *ngIf=\"xliffData\">\n\n  <app-xliff-viewer-item [(xliffItem)]=\"xliffData\" [parentKeys]=\"[]\"></app-xliff-viewer-item>\n\n</div>\n\n<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"download icon\"></i> Download file\n</h4>\n<app-file-download *ngIf=\"xliffData\" [xliffData]=\"xliffData\"></app-file-download>\n\n<!-- Debug -->\n<h4 *ngIf=\"xliffData\" class=\"ui horizontal divider header\">\n  <i class=\"bug icon\"></i> Debug\n</h4>\n\n<div *ngIf=\"xliffData\" class=\"ui container basic segment\">\n  <h3>Debug</h3>\n  <pre>{{xliffData | json}}</pre>\n</div>"
 
 /***/ },
 
