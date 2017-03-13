@@ -4,11 +4,7 @@
 
 <!-- Xliff items -->
 <div *ngIf="xliffData">
-  <div class="ui grid">
-    <div class="two wide column">#</div>
-    <div class="seven wide column">Source</div>
-    <div class="seven wide column">Target</div>
-  </div>
+
   <app-xliff-viewer-item [(xliffItem)]="xliffData" [parentKeys]="[]"></app-xliff-viewer-item>
 
 </div>

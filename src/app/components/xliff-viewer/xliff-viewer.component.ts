@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
 import { Xliff } from '../../xliff-data/xliff.model';
 import { Subscription } from 'rxjs/Subscription';
 import { XliffParserService } from '../../xliff-parser/xliff-parser.service';
@@ -10,7 +10,7 @@ import { Logger } from '../../utility/logger';
   templateUrl: './xliff-viewer.component.html',
   styleUrls: ['./xliff-viewer.component.css']
 })
-export class XliffViewerComponent implements OnInit {
+export class XliffViewerComponent implements OnInit, AfterViewChecked {
 
   @Input() xliffData: Xliff;
 
@@ -25,6 +25,10 @@ export class XliffViewerComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngAfterViewChecked() {
+    this.logger.log('rendered')
   }
 
 

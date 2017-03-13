@@ -1,8 +1,10 @@
 # XliffEditor (WIP)
 
-Editor for  [Xliff version 2](http://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html)
+UI tool for editing xliff file offline. Support [Xliff version 2](http://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.html)
 
-### Sample file
+[Demo](https://nnaynnay.github.io/xliff-editor/dist/)
+
+### Xliff sample file
 ```
 <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0"
  srcLang="en-US" trgLang="ja-JP">

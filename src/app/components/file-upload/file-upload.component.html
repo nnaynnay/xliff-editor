@@ -1,10 +1,7 @@
 <div class="ui basic segment center aligned">
-    <div class="ui left icon action input labeled">
-        <div class="ui label">
-            <i class="file icon"></i>
-            .xlf
-        </div>
+    <div class="ui input">
         <input #fileInput type="file" (change)="fileChanged($event)"/>
-        <div class="ui red submit button" (click)="fileInput.click()">UPLOAD</div>
+        <div class="ui red submit button" (click)="fileInput.click()">
+            UPLOAD *.XLF</div>
     </div>
 </div>

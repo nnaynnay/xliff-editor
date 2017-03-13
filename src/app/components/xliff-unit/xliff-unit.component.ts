@@ -15,8 +15,12 @@ export class XliffUnitComponent implements OnInit {
   ngOnInit() {
   }
 
+  isArrayKey(key: string) {
+    return /^\d+$/.test(key);
+  }
+
   get updateParentKeys() {
-    return (this.xliffUnit._id) ? this.parentKeys.concat(this.xliffUnit._id) : this.parentKeys;
+    return this.parentKeys;
   }
 
 }

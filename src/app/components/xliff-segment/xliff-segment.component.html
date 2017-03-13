@@ -1,5 +1,5 @@
-<div class="ui grid form">
-    <div class="sixteen wide column">
+<div class="ui form segments">
+    <div class="ui segment">
         <div class="ui small breadcrumb">
             <ng-container *ngFor="let parentKey of parentKeys; let i=index">
                 <i *ngIf="i !== 0" class="right angle icon divider"></i>
@@ -7,10 +7,13 @@
             </ng-container>
         </div>
     </div>
-    <div class="seven wide column">
-        {{xliffSegment.source}}
-    </div>
-    <div class="seven wide column">
-        <textarea rows="2"[(ngModel)]="xliffSegment.target"></textarea>
+
+    <div class="ui horizontal segments grid">
+        <div class="ui segment eight wide column">
+            {{xliffSegment.source}}
+        </div>
+        <div class="ui segment eight wide column">
+            <textarea rows="2" [(ngModel)]="xliffSegment.target"></textarea>
+        </div>
     </div>
 </div>
