@@ -2,3 +2,6 @@
     display: block;
     margin-bottom: 10rem;
 }
+:host input[type=file] {
+    display: none;
+}

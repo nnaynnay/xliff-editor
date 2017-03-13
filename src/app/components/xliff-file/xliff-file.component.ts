@@ -16,7 +16,7 @@ export class XliffFileComponent implements OnInit {
   }
 
   get updateParentKeys() {
-    return (this.xliffFile._id) ? this.parentKeys.concat(this.xliffFile._id) : this.parentKeys;
+    return this.parentKeys;
   }
 
 }
